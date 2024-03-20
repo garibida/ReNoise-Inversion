@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReNoise Inversion</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBKFF5WPJF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-KBKFF5WPJF');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ReNoise: Real Image Inversion Through Iterative Noising</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://garibida.github.io/danielgaribi/">Daniel Garibi</a><sup>1</sup>&nbsp &nbsp
+            </span>
+
+            <span class="author-block">
+              <a href="https://orpatashnik.github.io/">Or Patashnik</a><sup>1</sup>&nbsp &nbsp
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=imBjSgUAAAAJ">Andrey Voynov</a><sup>2</sup>&nbsp &nbsp
+            </span>
+
+            <span class="author-block">
+              <a href="https://www.elor.sites.tau.ac.il/">Hadar Averbuch-Elor</a><sup>1</sup>&nbsp &nbsp
+            </span>
+
+            <span class="author-block">
+              <a href="https://danielcohenor.com/">Daniel Cohen-Or</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tel-Aviv University</span> &nbsp &nbsp
+            <span class="author-block"><sup>2</sup>Google Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/garibida/ReNoise-Inversion"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-laptop"></i>
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img src="static/images/teaser_site.jpg">
+      <h2 class="subtitle has-text-centered">
+        Our ReNoise inversion technique can be applied to various diffusion models, including recent few-step ones. This figure illustrates the performance of our method with SDXL Turbo and LCM models, showing its effectiveness compared to DDIM inversion.
+        Additionally, we demonstrate that the quality of our inversions allows prompt-driven editing. As illustrated on the right, our approach also allows for prompt-driven image edits.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video controls>Your browser does not support the &lt;video&gt; tag.
+        <source src="static/images/demo_video.mp4"/>
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light is-small">
+    <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advancements in text-guided diffusion models have unlocked powerful image manipulation capabilities.
+            However, applying these methods to real images necessitates the inversion of the images into the domain of the pretrained diffusion model.
+            Achieving faithful inversion remains a challenge, particularly for more recent models trained to generate images with a small number of denoising steps.
+            In this work, we introduce an inversion method with a high quality-to-operation ratio, enhancing reconstruction accuracy without increasing the number of operations.
+            Building on reversing the diffusion sampling process, our method employs an iterative renoising mechanism at each inversion sampling step.
+            This mechanism refines the approximation of a predicted point along the forward diffusion trajectory, by iteratively applying the pretrained diffusion model, and averaging these predictions.
+            We evaluate the performance of our ReNoise technique using various sampling algorithms and models, including recent accelerated diffusion models. Through comprehensive evaluations and comparisons, we show its effectiveness in terms of both accuracy and speed. Furthermore, we confirm that our method preserves editability by demonstrating text-driven image editing on real images.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop is-centered has-text-centered">
+      <h2 class="title is-3">Editing Results with SDXL Turbo and LCM LoRA</h2>
+      <div id="results-carousel" class="carousel results-carousel" data-slides-to-show="1">
+          <img src="static/images/editing_results/Slide5.JPG" style="width: 80%;">
+          <img src="static/images/editing_results/Slide1.JPG" style="width: 80%;">
+          <img src="static/images/editing_results/Slide4.JPG" style="width: 80%;">
+          <img src="static/images/editing_results/Slide3.JPG" style="width: 80%;">
+          <img src="static/images/editing_results/Slide2.JPG" style="width: 80%;">
+          <img src="static/images/editing_results/Slide6.JPG" style="width: 80%;">
+          <img src="static/images/editing_results/Slide7.JPG" style="width: 80%;">
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<section class="section hero is-light is-small is-centered" style="align-content: center;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Geometric intuition for ReNoise</h2>
+      <img class="my-image" src="static/images/graphic-into.png">
+      <div class="content has-text-justified is-centered">
+        <ul class="column is-centered has-text-justified">
+          <li>
+            At each inversion step, we are trying to estimate \(z_t\) (marked with a red star) based on \(z_{t-1}\).
+          </li>
+          <li>
+            The straightforward approach is to use the reverse direction of the denoising step from \(z_{t-1}\) (dashed green arrow), assuming the trajectory is approximately linear.
+            However, this assumption is inaccurate, especially in few-step models, where the size of the steps is not small.
+          </li>
+          <li>
+            We use the linearity assumption only as an initial estimation and keep improving the estimation.
+          </li>
+          <li>
+            We recalculate the denoising step from the previous estimation, \(z_t^{(i)}\)(a blue point which is closer to the target \(z_t\)), and then proceed with its opposite direction from \(z_{t-1}\)(see the orange vectors).
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section hero is-small is-centered" style="align-content: center;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">How does it work?</h2>
+      <img src="static/images/method.png">
+      <div class="content has-text-justified is-centered">
+        <ul class="c column is-centered has-text-justified">
+        <li class="c">
+          Given an input image \(z_0\), we iteratively compute \(z_1, ..., z_T\) , where each \(z_t\) is calculated from \(z_{t-1}\)
+        </li>
+        <li class="c">
+          At each time step, we apply the UNet (\(\epsilon_\theta\)) \(\mathcal{K}+1\) times, each using a better approximation of \(z_t\) as the input. The initial approximation is \(z_{t-1}\). The next one, \(z_t^{(1)}\), is the result of the reversed sampler step (i.e., DDIM). The reversed step begins at \(z_{t-1}\) and follows the direction of \(\epsilon_\theta(z_{t-1}, t)\).
+    At the \(k\) renoising iteration, \(z_t^{(k)}\) is the input to the UNet, and we obtain a better \(z_t\) approximation.
+        </li>
+        <li class="c">
+          To improve the reconstruction-editability tradeoff
+          <ol class="b column is-centered has-text-justified">
+            <li class="b"> 
+              For the lasts iterations, we optimize \(\epsilon_\theta(z_{t}^{(k)}, t)\) to increase editability.
+            </li>
+            <li class="b">
+              As the final denoising direction, we use the average of the UNet predictions of the last few iterations.
+            </li>
+          </ol>
+        </li>
+        <li class="c">
+          This process is repeated across multiple timesteps of the inversion process resulting in \(z_T\).
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section hero is-light is-small is-centered" style="align-content: center;">
+  <div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Image Reconstruction Results</h2>
+      <div class="content has-text-justified is-centered">
+        <p style="text-align: center;">
+          Image reconstruction results comparing sampler reversing inversion techniques across different samplers (e.g., vanilla DDIM inversion) with our ReNoise method using the same sampler.
+          The number of denoising steps remains constant. However, the number of UNet passes varies, with the sampler reversing approach increasing the number of inversion steps, while our method increases the number of renoising iterations.
+          We present various configuration options for our method, including options with or without edit enhancement loss and Noise Correction (NC).
+        </p>
+        <br>
+        <img src="static/images/Graphs.png" style="width: 100%;">
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section is-light" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      TBD
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/">Nerfies</a> project page. If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
