@@ -18,5 +18,11 @@ Our ReNoise inversion technique can be applied to various diffusion models, incl
 ## Citation
 If you use this code for your research, please cite the following work: 
 ```
-@misc{
+@misc{garibi2024renoise,
+      title={ReNoise: Real Image Inversion Through Iterative Noising}, 
+      author={Daniel Garibi and Or Patashnik and Andrey Voynov and Hadar Averbuch-Elor and Daniel Cohen-Or},
+      year={2024},
+      eprint={2403.14602},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
