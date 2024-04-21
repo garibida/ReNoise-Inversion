@@ -63,19 +63,19 @@ rec_img, inv_latent, noise, all_latents = invert(input_image,
 ```
 
 You can controll the inversion paremeters using the following attributes in the `RunConfig`:
--`num_inference_steps` - Number of denoise steps.
--`num_inversion_steps` - Number of inversion steps.
--`guidance_scale` - Guidence scale during the inversion.
--`num_renoise_steps` - Number of ReNoise steps.
--`max_num_renoise_steps_first_step` - Max number of ReNoise steps when `T<250`
--`inversion_max_step` - Inversion strength. The number of denoising steps depends on the amount of noise initially added. When strength is `1.0`, the image will be inverted to complete noise and the denoising process will run for the full number of steps. When strength is `0.5`, the image will be inverted to half noise and the denoising process will run for half of the steps.
--`num_inference_steps` - Number of denoise steps
--`average_latent_estimations` - Perform estimations averaging.
--`average_first_step_range` - Averaging range when `T<250`. The value is tuple, for example `(0, 5)`.
--`average_first_step_range` - Averaging range when `T>250`. The value is tuple, for example `(8, 10)`.
--`noise_regularization_lambda_ac` - Noise regularization pairwise lambda.
--`noise_regularization_lambda_kl` - Noise regularization patch KL divergence lambda.
--`perform_noise_correction` - Perform noise correction.
+- `num_inference_steps` - Number of denoise steps.
+- `num_inversion_steps` - Number of inversion steps.
+- `guidance_scale` - Guidence scale during the inversion.
+- `num_renoise_steps` - Number of ReNoise steps.
+- `max_num_renoise_steps_first_step` - Max number of ReNoise steps when `T<250`
+- `inversion_max_step` - Inversion strength. The number of denoising steps depends on the amount of noise initially added. When strength is `1.0`, the image will be inverted to complete noise and the denoising process will run for the full number of steps. When strength is `0.5`, the image will be inverted to half noise and the denoising process will run for half of the steps.
+- `num_inference_steps` - Number of denoise steps
+- `average_latent_estimations` - Perform estimations averaging.
+- `average_first_step_range` - Averaging range when `T<250`. The value is tuple, for example `(0, 5)`.
+- `average_first_step_range` - Averaging range when `T>250`. The value is tuple, for example `(8, 10)`.
+- `noise_regularization_lambda_ac` - Noise regularization pairwise lambda.
+- `noise_regularization_lambda_kl` - Noise regularization patch KL divergence lambda.
+- `perform_noise_correction` - Perform noise correction.
 
 In case of stochastic sampler add the following to use the same \epsilon_t as in the inversion process.
 ```
