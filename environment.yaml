@@ -1,0 +1,9 @@
+name: renoise_inversion
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.11.8
+  - pip=23.3.1
+  - pip:
+    - -r requirements.txt

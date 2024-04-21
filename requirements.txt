@@ -1,0 +1,9 @@
+gradio
+spaces
+torch==2.2.0
+torchvision==0.17.0
+diffusers==0.24.0
+transformers==4.32.1
+pyrallis==0.3.1
+accelerate==0.25.0
+bitsandbytes==0.43.0
