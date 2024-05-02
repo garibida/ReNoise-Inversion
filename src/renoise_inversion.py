@@ -127,6 +127,9 @@ def inversion_step(
             # if noise regularization is enabled, we need to split the batch size for the first step
             if pipe.cfg.noise_regularization_num_reg_steps > 0 and i == 0:
                 noise_pred_optimal, noise_pred = noise_pred.chunk(2)
+                if pipe.do_classifier_free_guidance:
+                    noise_pred_optimal_uncond, noise_pred_optimal_text = noise_pred_optimal.chunk(2)
+                    noise_pred_optimal = noise_pred_optimal_uncond + pipe.guidance_scale * (noise_pred_optimal_text - noise_pred_optimal_uncond)
                 noise_pred_optimal = noise_pred_optimal.detach()
 
             # perform guidance

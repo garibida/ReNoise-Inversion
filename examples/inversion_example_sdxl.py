@@ -15,7 +15,7 @@ model_type = Model_Type.SDXL
 scheduler_type = Scheduler_Type.DDIM
 pipe_inversion, pipe_inference = get_pipes(model_type, scheduler_type, device=device)
 
-input_image = Image.open("example_images/lion.jpeg").convert("RGB").resize((512, 512))
+input_image = Image.open("example_images/lion.jpeg").convert("RGB").resize((1024, 1024))
 prompt = "a lion in the field"
 
 config = RunConfig(model_type = model_type,
